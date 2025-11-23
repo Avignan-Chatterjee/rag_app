@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+streamlit
+httpx
+langchain
+langchain-community
+langchain-ollama
+langchain-milvus
+pymilvus
+tqdm
