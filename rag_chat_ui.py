@@ -3,20 +3,23 @@ import streamlit as st
 import httpx
 import json
 
-st.set_page_config(page_title="Local RAG Chat", page_icon="Brain", layout="centered")
+st.set_page_config(page_title="Oncall Buddy", page_icon="Flow", layout="centered")
 
 # ==================== CONFIG ====================
 BACKEND_URL = "http://127.0.0.1:8000/chat"   # Change if your backend uses different port
 
-st.title("Brain Local RAG Assistant")
+st.title("Flow Oncall Assistant")
 st.caption("100% private • Fully offline")
 
 # ==================== SIDEBAR ====================
 with st.sidebar:
-    st.header("RAG Settings")
-    temperature = st.slider("Temperature", 0.0, 1.0, 0.7, 0.05)
-    max_tokens = st.slider("Max Tokens", 256, 4096, 2048, 128)
-    top_k = st.slider("Top-K Retrieval", 1, 20, 5)
+    #st.header("RAG Settings")
+    #temperature = st.slider("Temperature", 0.0, 1.0, 0.7, 0.05)
+    #max_tokens = st.slider("Max Tokens", 256, 4096, 2048, 128)
+    #top_k = st.slider("Top-K Retrieval", 1, 20, 5)
+    temperature = 0.7
+    max_tokens = 4096
+    top_k = 5
 
     if st.button("Clear Chat"):
         st.session_state.messages = []
@@ -25,7 +28,7 @@ with st.sidebar:
 # ==================== INIT HISTORY ====================
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "assistant", "content": "Hi! I'm your local RAG assistant. Ask me anything about your documents!"}
+        {"role": "assistant", "content": "Hi! I'm your local Flow Oncall assistant. Ask me anything about Flow Oncall!"}
     ]
 
 # ==================== DISPLAY MESSAGES ====================

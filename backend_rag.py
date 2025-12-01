@@ -4,8 +4,8 @@ from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from langchain_ollama import OllamaEmbeddings, ChatOllama
 from langchain_milvus import Milvus
-from langchain.chains import RetrievalQA
-from langchain.prompts import PromptTemplate
+from langchain_classic.chains import RetrievalQA
+from langchain_classic.prompts import PromptTemplate
 import asyncio
 import json
 import os
@@ -83,8 +83,8 @@ async def chat(request: ChatRequest):
 # === INGEST DOCUMENTS (run once or whenever you add files) ===
 @app.post("/ingest")
 async def ingest_folder(folder: str = "docs"):
-    from langchain.text_splitter import RecursiveCharacterTextSplitter
-    from langchain.document_loaders import DirectoryLoader, TextLoader, PyPDFLoader
+    from langchain_classic.text_splitter import RecursiveCharacterTextSplitter
+    from langchain_classic.document_loaders import DirectoryLoader, TextLoader, PyPDFLoader
 
     if not os.path.exists(folder):
         return {"error": "Folder not found"}
